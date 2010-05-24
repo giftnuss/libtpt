@@ -3,7 +3,7 @@
  *
  * Handle file read buffering.
  *
- * Copyright (C) 2002-2009 Isaac W. Foraker (isaac at noscience dot net)
+ * Copyright (C) 2002-2010 Isaac W. Foraker (isaac at noscience dot net)
  * All Rights Reserved
  *
  * Redistribution and use in source and binary forms, with or without
@@ -74,7 +74,7 @@ public:
 	/// True when not at end of buffer.
 	operator bool() const;
 	/// Index access
-	const char operator[](unsigned long index);
+	char operator[](unsigned long index) const;
 	/// Current size
 	unsigned long size() const;
 
@@ -86,16 +86,16 @@ public:
 private:
 	std::istream* instr_;
 	std::string name_;
-	unsigned long buffersize_;
-	unsigned long bufferallocsize_;
-	char* buffer_;
+	mutable unsigned long buffersize_;
+	mutable unsigned long bufferallocsize_;
+	mutable char* buffer_;
 	unsigned bufferidx_;
 	bool freestreamwhendone_;
-	bool done_;
+	mutable bool done_;
 
 	void openfile(const char* filename);
-	bool readfile();
-	void enlarge();	// increase buffer size
+	bool readfile() const;
+	void enlarge() const;	// increase buffer size
 
 	// Prevent use of this constructor
 	Buffer();

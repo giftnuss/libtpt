@@ -3,7 +3,7 @@
  *
  * Some common code shared by the test apps.
  *
- * Copyright (C) 2002-2009 Isaac W. Foraker (isaac at noscience dot net)
+ * Copyright (C) 2002-2010 Isaac W. Foraker (isaac at noscience dot net)
  * All Rights Reserved
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,6 +33,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#include <cstdio>
 #include <cstdlib>
 
 bool mycallback(std::ostream& os, TPT::Object& params)
